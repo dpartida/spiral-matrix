@@ -10,14 +10,15 @@ void CheckStr(char *);
  *repeat prompt for invalid input*/
 int GetUserInt(void) {
   char *str = malloc(MAXBUF * sizeof(char));
-  printf("\tDEBUG (intvalidation.c)-- allocated memory for string.\n");
+  printf("\tDEBUG (GetUserInt)-- allocated input-string memory.\n");
   fgets(str, MAXBUF, stdin);
   CheckNoInput(str); //check for empty input
   CheckStr(str); //check for non-digit characters
   int num = atoi(str); //convert valid input string to integer type
+  printf("\tDEBUG (GetUserInt)-- assigned input to integer variable.\n");
   
   free(str); //free input string (This line creates a "double free" error when the user takes multiple attempts to give valid input)
-  printf("\tDEBUG (intvalidation.c)-- freed input string memory.\n");
+  printf("\tDEBUG (GetUserInt)-- freed input-string memory.\n");
   return num;
 }
 
@@ -26,7 +27,7 @@ void CheckNoInput(char *str) {
   if (str[0] == '\n') {
     fprintf(stderr, "[Error] no input detected. Please enter an integer: \n");
     free(str);
-    printf("\tDEBUG (intvalidation.c)-- freed string memory.\n");
+    printf("\tDEBUG (CheckNoInput)-- freed input-string memory.\n");
     GetUserInt(); //repeat prompt
   }
 }
@@ -40,7 +41,7 @@ void CheckStr(char *str) {
     if (isdigit(c) == 0) {
       fprintf(stderr, "[Error] that is not an integer. Please enter an integer: \n");
       free(str);
-      printf("\tDEBUG (intvalidation.c)-- freed string memory.\n");
+      printf("\tDEBUG (CheckStr)-- freed input-string memory.\n");
       GetUserInt(); //repeat prompt
       return;
     }

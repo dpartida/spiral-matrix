@@ -33,19 +33,15 @@ int main (void) {
   
   //allocate matrix memory
   int **mat = AllocateMatrix(n);
-  printf("\tDEBUG -- allocated square matrix memory for size %dx%d.\n", n, n);
   
   //allocate start-coord set array and get coords
   int *start = GetStartCoords(n);
-  printf("\tDEBUG -- starting location: x coord = %d y coord = %d\n", start[0], start[1]);
 
   /*more code to produce the matrix values*/
   printf("Spiral matrix code isn't finished--skipping matrix.\n");
 
   //free used memory
   free(start);
-  printf("\tDEBUG -- freed starting-coords-array memory\n");
   free(mat);
-  printf("\tDEBUG -- freed matrix memory\n");
   return 0;
 }
